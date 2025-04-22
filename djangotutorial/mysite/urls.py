@@ -16,8 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.http import HttpResponse  # Adicione esta linha
+
+# View simples para a página inicial
+def home(request):
+    return HttpResponse("Página inicial funcionando! Acesse <a href='/polls/'>polls</a> ou <a href='/admin/'>admin</a>.")
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path("polls/", include("polls.urls")),
+    path('polls/', include('polls.urls')),
+    path('', home),  # Esta linha resolve o 404 para a raiz do site!
 ]
