@@ -17,6 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.http import HttpResponse  # Adicione esta linha
+from django.conf.urls.static import static
+from django.conf import settings
 
 # View simples para a página inicial
 def home(request):
@@ -25,5 +27,4 @@ def home(request):
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('polls/', include('polls.urls')),
-    path('', home),  # Esta linha resolve o 404 para a raiz do site!
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
