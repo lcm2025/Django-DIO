@@ -29,6 +29,7 @@ DEBUG = 'RENDER' not in os.environ
 ALLOWED_HOSTS = [
     'https://mysite-dj-dio-3me9.onrender.com/',  # Substitua pelo URL do seu serviço no Render
     'localhost',                 # Para testes locais
+    '127.0.0.1',
 ]
 
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
@@ -130,6 +131,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # Importante para produção
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 if not DEBUG:
     # Tell Django to copy static assets into a path called `staticfiles` (this is specific to Render)
