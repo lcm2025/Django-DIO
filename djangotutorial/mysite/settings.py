@@ -26,7 +26,10 @@ SECRET_KEY = os.environ.get('SECRET_KEY', default='secret')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'RENDER' not in os.environ
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'https://mysite-dj-dio-3me9.onrender.com/',  # Substitua pelo URL do seu serviço no Render
+    'localhost',                 # Para testes locais
+]
 
 RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:
